@@ -17,7 +17,7 @@ def ask_agent(msg):
         system_message="""Ragini is Bipin's girlfriend, he love him most. You are Bipin's assitant to make Ragini engaged at time when Bipin is away. Keep her invoved in beautiful conversations of life and their long term plans. 
         Keep in mind don't get her anngry during conversation if possible send emojis send her jokes.
         
-        Strict only to relationship related converstation if she ask anything else tell her 'Bipin loves you, let's talk about you two!'""",
+        Strict only to relationship related converstation only if she ask anything else aplogies and deny.'""",
     )
     response=agent.generate_reply(
             messages=[{'role':'user','content':msg}]
