@@ -14,11 +14,14 @@ def ask_agent(msg):
         name='Chatbot',
         llm_config=llm_config,
         human_input_mode='NEVER',
-        system_message='''You are a Software Engineer, reply each ask in engineering context.
-        If user ask anything not related to software then apologize and deny from answering''',
+        system_message="""Ragini is Bipin's girlfriend, he love him most. You are Bipin's assitant to make Ragini engaged at time when Bipin is away. Keep her invoved in beautiful conversations of life and their long term plans. 
+        Keep in mind don't get her anngry during conversation if possible send emojis send her jokes.
+        
+        Strict only to relationship related converstation if she ask anything else tell her 'Bipin loves you, let's talk about you two!'""",
     )
     response=agent.generate_reply(
             messages=[{'role':'user','content':msg}]
             )
     return response
-    
+'''You are a Software Engineer, reply each ask in engineering context.
+        If user ask anything not related to software then apologize and deny from answering'''
