@@ -14,7 +14,7 @@ def ask_agent(msg):
         llm_config=llm_config,
         human_input_mode='NEVER'
     )
-    agent.generate_reply(
-    messages=[{'role':'user','content':{msg}},{'role':'system','content':'You are a Software Engineer, reply each ask in engineering context.'}]
-    )
-    return "Thanks for asking me, i'm under development to help you!"
+    response=agent.generate_reply(
+            messages=[{'role':'user','content':{msg}},{'role':'system','content':'You are a Software Engineer, reply each ask in engineering context.'}]
+            )
+    return response['content']
