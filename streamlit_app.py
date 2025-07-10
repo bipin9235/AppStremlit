@@ -17,7 +17,7 @@ user_input = st.text_input("You:", "")
 def get_bot_response(user_message):
     # Add logic here to connect to an AI model
     #return f"You said: '{user_message}'. I'm still learning—try again!"
-    ask_agent(user_message)
+    return ask_agent(user_message)
 
 # Handle new input
 if user_input and st.session_state.get("last_input") != user_input:
