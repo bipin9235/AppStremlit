@@ -16,11 +16,8 @@ def ask_agent(msg):
         human_input_mode='NEVER',
         system_message='You are a Software Engineer, reply each ask in engineering context.',
     )
-    '''response=agent.generate_reply(
+    response=agent.generate_reply(
             messages=[{'role':'user','content':{msg}},{'role':'system','content':'You are a Software Engineer, reply each ask in engineering context.'}]
             )
-    return response'''
-    response = agent.run(
-    message= msg,
-    max_turns=1,)
-    return response.process()
+    return response
+    
