@@ -13,23 +13,27 @@ if "messages" not in st.session_state:
 if "user_input" not in st.session_state:
     st.session_state.user_input = ""
 
-if "processing" not in st.session_state:
-    st.session_state.processing = False
+if "submit_clicked" not in st.session_state:
+    st.session_state.submit_clicked = False
 
-# Text box and Submit button side by side
-with st.form(key="chat_form"):
-    st.session_state.user_input = st.text_input("You:", value=st.session_state.user_input)
-    submitted = st.form_submit_button("Submit")
+# Layout for input and button
+col1, col2 = st.columns([5, 1])
+
+with col1:
+    st.session_state.user_input = st.text_input("You:", value=st.session_state.user_input, label_visibility="collapsed")
+
+with col2:
+    if st.button("Submit"):
+        st.session_state.submit_clicked = True
 
 # Handle submission
-if submitted and st.session_state.user_input.strip():
+if st.session_state.submit_clicked and st.session_state.user_input.strip():
     st.session_state.messages.append(("User", st.session_state.user_input))
-    st.session_state.processing = True
     with st.spinner("🤖 Generating response..."):
         bot_reply = ask_agent(st.session_state.user_input)
     st.session_state.messages.append(("Bot", bot_reply))
-    st.session_state.processing = False
-    st.session_state.user_input = ""  # Clear text input
+    st.session_state.user_input = ""  # Clear input field
+    st.session_state.submit_clicked = False  # Reset button state
 
 # Display chat history
 for sender, message in st.session_state.messages:
