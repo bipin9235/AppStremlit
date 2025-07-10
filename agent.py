@@ -1,0 +1,18 @@
+from autogen import ConversableAgent
+model = "openai/gpt-4.1-Nano"
+llm_config = {
+    "model": model,
+    'base_url':'https://openrouter.ai/api/v1',
+    'api_key':OPENAI_API_KEY,
+    
+}
+def ask_agent(msg):
+    agent=ConversableAgent(
+        name='Chatbot',
+        llm_config=llm_config,
+        human_input_mode='NEVER'
+    )
+    agent.generate_reply(
+    messages=[{'role':'user','content':{msg}},{'role':'system','content':'You are a Software Engineer, reply each ask in engineering context.'}]
+    )
+    return "Thanks for asking me, i'm under development to help you!"
