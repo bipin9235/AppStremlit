@@ -1,4 +1,5 @@
 import streamlit as st
+from agent import ask_agent
 
 # Set up the page
 st.set_page_config(page_title="Chatbot", page_icon="🤖")
@@ -15,7 +16,8 @@ user_input = st.text_input("You:", "")
 # Simulate a response function (placeholder)
 def get_bot_response(user_message):
     # Add logic here to connect to an AI model
-    return f"You said: '{user_message}'. I'm still learning—try again!"
+    #return f"You said: '{user_message}'. I'm still learning—try again!"
+    ask_agent(user_message)
 
 # Handle new input
 if user_input and st.session_state.get("last_input") != user_input:
