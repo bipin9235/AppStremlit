@@ -2,7 +2,7 @@ import streamlit as st
 
 # Set up the page
 st.set_page_config(page_title="Chatbot", page_icon="🤖")
-st.title("🤖 Chat with AI")
+st.title("🤖 Chat with MyAI")
 st.markdown("Type something below and the bot will respond.")
 
 # Initialize session state to store the conversation
