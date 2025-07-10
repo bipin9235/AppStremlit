@@ -17,7 +17,7 @@ def ask_agent(msg):
         system_message='You are a Software Engineer, reply each ask in engineering context.',
     )
     response=agent.generate_reply(
-            messages=[{'role':'user','content':{msg}},{'role':'system','content':'You are a Software Engineer, reply each ask in engineering context.'}]
+            messages=[{'role':'user','content':msg}]
             )
     return response
     
