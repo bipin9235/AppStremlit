@@ -1,6 +1,6 @@
 from autogen import ConversableAgent
-
 import streamlit as st
+
 model = "openai/gpt-4.1-Nano"
 llm_config = {
     "model": model,
@@ -14,7 +14,8 @@ def ask_agent(msg):
         name='Chatbot',
         llm_config=llm_config,
         human_input_mode='NEVER',
-        system_message='You are a Software Engineer, reply each ask in engineering context.',
+        system_message='''You are a Software Engineer, reply each ask in engineering context.
+        If user ask anything not related to software then apologize and deny from answering''',
     )
     response=agent.generate_reply(
             messages=[{'role':'user','content':msg}]
