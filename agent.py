@@ -6,7 +6,6 @@ llm_config = {
     'base_url':'https://openrouter.ai/api/v1',
     'api_key':st.secrets["OPENAI_API_KEY"],
     #'api_key':OPENAI_API_KEY,
-    
 }
 def ask_agent(msg):
     agent=ConversableAgent(
