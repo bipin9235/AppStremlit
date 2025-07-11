@@ -6,34 +6,30 @@ st.set_page_config(page_title="Chatbot", page_icon="🤖")
 st.title("🤖 Chat with AI")
 st.markdown("Type something below and the bot will respond.")
 
-# Initialize session states
+# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-if "user_input" not in st.session_state:
-    st.session_state.user_input = ""
+# Display messages top-down
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
-if "processing" not in st.session_state:
-    st.session_state.processing = False
+# Bottom input using chat_input
+user_input = st.chat_input("You:")
 
-# Text box and Submit button side by side
-with st.form(key="chat_form"):
-    st.session_state.user_input = st.text_input("You:", value=st.session_state.user_input)
-    submitted = st.form_submit_button("Submit")
+if user_input:
+    # Add user message
+    st.session_state.messages.append({"role": "user", "content": user_input})
 
-# Handle submission
-if submitted and st.session_state.user_input.strip():
-    st.session_state.messages.append(("User", st.session_state.user_input))
-    st.session_state.processing = True
-    with st.spinner("🤖 Generating response..."):
-        bot_reply = ask_agent(st.session_state.user_input)
-    st.session_state.messages.append(("Bot", bot_reply))
-    st.session_state.processing = False
-    st.session_state.user_input = ""  # Clear text input
+    # Show bot is "thinking"
+    with st.chat_message("assistant"):
+        with st.spinner("🤖 Generating response..."):
+            response = ask_agent(user_input)
+            st.markdown(response)
 
-# Display chat history
-for sender, message in st.session_state.messages:
-    if sender == "User":
-        st.markdown(f"👤 **You:** {message}")
-    else:
-        st.markdown(f"🤖 **Bot:** {message}")
+    # Add bot message
+    st.session_state.messages.append({"role": "assistant", "content": response})
+
+    # Refresh to show updated messages
+    st.experimental_rerun()
