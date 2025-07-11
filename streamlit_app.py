@@ -15,7 +15,7 @@ st.markdown("""
         z-index: 1000;
     }
     </style>
-    <div class="fixed-text">🤖 Python Agent</div>
+    <div class="fixed-text">🤖 Python AI Agent</div>
     """, unsafe_allow_html=True)
 
 #st.markdown("Type something below and the bot will respond.")
