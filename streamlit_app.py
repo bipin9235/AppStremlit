@@ -3,8 +3,22 @@ from agent import ask_agent
 
 # Page setup
 st.set_page_config(page_title="Chatbot", page_icon="🤖")
-st.title("🤖 Chat with AI")
-st.markdown("Type something below and the bot will respond.")
+st.markdown("""
+    <style>
+    .fixed-text {
+        position: fixed;
+        top: 20px;
+        left: 30px;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        z-index: 1000;
+    }
+    </style>
+    <div class="fixed-text">🤖 Python Agent</div>
+    """, unsafe_allow_html=True)
+
+#st.markdown("Type something below and the bot will respond.")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -32,4 +46,4 @@ if user_input:
     st.session_state.messages.append({"role": "assistant", "content": response})
 
     # Refresh to show updated messages
-    st.experimental_rerun()
+    st.rerun()
