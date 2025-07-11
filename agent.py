@@ -1,12 +1,11 @@
 from autogen import ConversableAgent
 import streamlit as st
-OPENAI_API_KEY="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"
 model = "openai/gpt-4.1-Nano"
 llm_config = {
     "model": model,
     'base_url':'https://openrouter.ai/api/v1',
-    #'api_key':st.secrets["OPENAI_API_KEY"],
-    'api_key':OPENAI_API_KEY,
+    'api_key':st.secrets["OPENAI_API_KEY"],
+    #'api_key':OPENAI_API_KEY,
     
 }
 def ask_agent(msg):
