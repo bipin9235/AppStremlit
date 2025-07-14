@@ -1,12 +1,6 @@
 from autogen import ConversableAgent
-import streamlit as st
-model = "openai/gpt-4.1-Nano"
-llm_config = {
-    "model": model,
-    'base_url':'https://openrouter.ai/api/v1',
-    'api_key':st.secrets["OPENAI_API_KEY"],
-    #'api_key':OPENAI_API_KEY,
-}
+from config import llm_config
+
 def ask_agent(msg):
     agent=ConversableAgent(
         name='Chatbot',
